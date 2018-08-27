@@ -1,4 +1,4 @@
-These packages can be installed through ''conda install <package name>'' if you installed Miniconda first.
+#These packages can be installed through ''conda install <package name>'' if you installed Miniconda first.
 
 _python 2.6+_
 
@@ -13,7 +13,7 @@ _wget_
 This whole install process is followed Matthias's Cyipopt documentation: https://github.com/matthias-k/cyipopt
 
  
-First Install Ipopt
+#First Install Ipopt
 
 Download ipopt package that you want to installed from this address https://www.coin-or.org/download/source/Ipopt/.
 
@@ -55,7 +55,8 @@ export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$IPOPTPATH/lib/pkgconfig
 export PATH=$PATH:$IPOPTPATH/bin
 
 Get help from this web-page if you got error at this step. https://stackoverflow.com/questions/13428910/how-to-set-the-environmental-variable-ld-library-path-in-linux
-Connect ipopt with python using cyipopt
+
+#Connect ipopt with python using cyipopt
 
 Download cyipopt-0.1.7 from this github: https://github.com/matthias-k/cyipopt
 
