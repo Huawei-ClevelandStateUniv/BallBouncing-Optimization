@@ -1,0 +1,46 @@
+Install SNOPT
+
+Buy SNOPT source code from http://www.sbsi-sol-optimize.com/ if you or your lab haven't buy.
+
+Here I am using the newest version that Anne got from Stanford: SNOPT7.5
+
+Extract SNOPT code and put it in home dictionary.
+
+Using ./configure, make, and make install to install SNOPT in Linux. Please look at INSTALL file inside SNOPT for more detail of install.
+
+ 
+Connect SNOPT with Python2.7
+
+Download Snopt-Python code from github. You may want to download through snopt-only branch.
+
+Set the environment variable SNOPT7LIB to the location of your SNOPT libraries, for example, the following commands assume your SNOPT Fortran libraries are in a directory called "lib" in your home directory:
+
+```
+
+export SNOPT7LIB=$HOME/lib
+
+```
+
+Looking for this web-page if you wan to learn more about set environment variable. https://stackoverflow.com/questions/13428910/how-to-set-the-environmental-variable-ld-library-path-in-linux
+
+Copy snfilewrapper.f inside snopt-python/util to snopt7/src. Add 'snfilewrapper' inside 'Submakefile' file 'SNOPT' section.
+
+In shell, build, install, snopt-python
+
+```
+
+python setup.py build
+
+python setup.py install --user
+
+```
+
+Run an example:
+
+```
+
+python dieta.py
+
+```
+
+Look at the closed issues for more information if you get error in installing. https://github.com/snopt/snopt-python/issues?q=is%3Aissue+is%3Aclosed
