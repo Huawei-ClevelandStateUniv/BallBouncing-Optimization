@@ -40,14 +40,14 @@ peak_dis = np.linspace(10.0, 10.0, num_peak)  # initialize peak targets with 10
 np.random.seed(seed=88)   # define random seeds
 peak_dis[1:] = peak_dis[1:] - 2*np.random.random(num_peak-1)  # random chose peak targets, except the first
                                                              # first will keep with 10
-bot_dis_ind = np.linspace(100, (num_nodes-1)*2-100, num_peak-1, dtype=np.int32)  # index of bottom peak
+bot_dis_ind = np.linspace(200, (num_nodes-1)*2-200, num_peak-1, dtype=np.int32)  # index of bottom peak
 
 # solver options, choose one
 #Solver = 'MA27'
 #Solver = 'MA57'
 #Solver = 'MA77'
-Solver = 'MA86'
-#Solver = 'MUMPS'
+#Solver = 'MA86'
+Solver = 'MUMPS'
 #Solver = 'Pardiso'
 
 i_x = np.linspace(0, num_states*num_nodes, num_nodes,  # x index
@@ -65,14 +65,11 @@ lb_x[i_x] = -0.1   # set lower bounds of x to -0.1 m
 lb_x[i_v] = -20.0  # set lower bounds of xdot to -20.0 m/s
 lb_x[peak_dis_ind] = peak_dis  # set lower bounds of x at peak target index to previous generated peak numbers
 lb_x[peak_dis_ind+1] = 0.0   # set lower bounds of xdot at peak target index to 0 m/s
-
 lb_x[bot_dis_ind] = -0.02  # set lower bounds of x at bottom target index to -0.02 m
-    
-lb_c = np.zeros((num_par)) -100.0  # set lower bounds of controller to -100 N
+lb_c = np.zeros((num_par)) -200.0  # set lower bounds of controller to -100 N
                   
 ub_x = np.zeros((num_states*num_nodes))  # initialize upper bounds of optimization
                                          # parameters, include x, xdot, and u
-
 ub_x[i_x] = 10.0  # set upper bounds of x to 10 m
 ub_x[i_v] = 20.0  # set upper bounds of xdot to 20.0 m/s
 ub_x[peak_dis_ind] = peak_dis  # set upper bounds of x at peak target index to previous generated peak numbers
@@ -80,7 +77,7 @@ ub_x[peak_dis_ind+1] = 0.0   # set upper bounds of xdot at peak target index to 
 
 ub_x[bot_dis_ind] = -0.02  # set upper bounds of x at bottom target index to -0.02 m
                
-ub_c = np.zeros((num_par)) + 100.0  # set upper bounds of controller to 100 N
+ub_c = np.zeros((num_par)) + 200.0  # set upper bounds of controller to 100 N
     
 lb = list(np.hstack((lb_x, lb_c)))  # combine states and controller low bounds
 ub = list(np.hstack((ub_x, ub_c)))  # combine states and controller upper bounds
@@ -119,6 +116,7 @@ x_init = np.zeros(num_states*num_nodes)
 x_init[i_x] = 5.0
 x_init[i_v] = 0.0 
 x_init[peak_dis_ind] = peak_dis
+x_init[bot_dis_ind] = -0.02
 
 unknown = np.zeros(num_par) + 10.3  # initialize controller with 10.3N
 x0 = np.hstack((x_init, unknown))  # combine states and controller initialization

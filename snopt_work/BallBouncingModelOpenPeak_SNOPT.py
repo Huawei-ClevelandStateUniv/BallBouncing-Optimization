@@ -277,7 +277,7 @@ class BallBouncingModel_Snopt(object):
         xdv = xsd[:S/2]
         xdd = xsd[S/2:]
         
-        Fk, dFkdx, dFkdxd = self.SpringDamper(x, xd)
+        Fk, dFkdx, dFkdxd = self.ContactModel(x, xd)
         
         f = np.zeros(S)
         f[0] = xd - xdv

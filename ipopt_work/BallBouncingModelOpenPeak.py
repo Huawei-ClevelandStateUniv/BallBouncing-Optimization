@@ -56,7 +56,7 @@ class BallBouncingModel(object):
         #
         
         grad = np.zeros_like(x)
-        grad[self.i_u] = (0.0001*4*self.interval*x[self.i_u]**3)/self.num_nodes
+        grad[self.i_u] = 0.0001*4*self.interval*(x[self.i_u]**3)/self.num_nodes
         
         return grad
 
@@ -85,8 +85,8 @@ class BallBouncingModel(object):
 				
             if self.intergration_method == 'backward euler':
 					f, dfdx, dfdxdot, dfdp = self.BallBouncing(x_a,
-            															    (x_a - x_p)/h,
-                                                            con_a)
+            													 (x_a - x_p)/h,
+                                                                con_a)
             else:
 					print 'Do not have the Intergration Method code'
 					
@@ -131,7 +131,7 @@ class BallBouncingModel(object):
             if self.intergration_method == 'backward euler':
                 f, dfdx, dfdxdot, dfdu = self.BallBouncing(x_a,
 														 (x_a - x_p)/h,
-                                                         con_a)
+                                                            con_a)
                 
                 Jac_x[:, :S] =  -dfdxdot/h
                 Jac_x[:, S:2*S] = dfdx + dfdxdot/h
@@ -186,7 +186,7 @@ class BallBouncingModel(object):
             if self.intergration_method == 'backward euler':
                 f, dfdx, dfdxdot, dfdu = self.BallBouncing(x_a,
 														  (x_a - x_p)/h,
-                                                            con_a)
+                                                             con_a)
                     
                 Jac_p[:, :S] = -dfdxdot/h
                 Jac_p[:, S:2*S] = dfdx + dfdxdot/h
