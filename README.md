@@ -5,7 +5,8 @@ In this project, we are trying to build the most simpliest model with strong non
 
 To run the optmization in this project, Ipopt and Snopt should be installed and complied with python.
 
-Guide of install Ipopt in Linux (Ubuntu) and compling with python is in Ipopt Installation Guide.txt
+Guide of install Ipopt in Linux (Ubuntu) and compling with python can be found [here](https://github.com/matthias-k/cyipopt#example-installation-on-ubuntu-1804-with-custom-compiled-ipopt)
+
 Guide of install Snopt in Linux (Ububtu) and compling with python is in Snopt Installation Guide.txt 
 
 I am still facing some errors installing Ipopt/Snopt and make them work with python in Windows. You may need to use Linux system to do the optimization. Or if you can install/complie Ipopt/Snopt in Windows by yourself. 
